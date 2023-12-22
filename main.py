@@ -65,7 +65,7 @@ language = {
 	'mun': "moon, night sky object",
 	'musi': "artistic, fun, playful",
 	'mute': "many, several, much",
-	'namako': "spize",
+	'namako': "spice, extra",
 	'nanpa': "-th (ordinal number); number",
 	'nasa': "strange, crazy, drunk",
 	'nasin': "way, method, path",
@@ -97,7 +97,7 @@ language = {
 	'sewi': "highest part, divine, sacred",
 	'sijelo': "body, physical state",
 	'sike': "circular thing, ball, sphere, wheel",
-	'sin': "new, more, another",
+	'sin': "new, more, another, fresh",
 	'sina': "you",
 	'sinpin': "face, front, wall",
 	'sitelen': "image, symbol, mark",
@@ -146,16 +146,31 @@ if side_menu == "Home":
 
 if side_menu == "Dictionary":
 	st.title("Dictionary")
+	rvg = st.checkbox("Random Vocabulary Generator")
 	st.divider()
 
-	rvg = st.checkbox("Random Vocabulary Generator")
-
 	if rvg:
-		word, meaning = rand.choice(list(language.items()))
+		word, meaning = np.random.choice(list(language.items()))
 		st.header(word)
 
-	for word, meaning in language.items():
-		f"{word}; {meaning}"
-		st.write(" ")
+		if 'rvl' not in st.session_state:
+			pass
+		else:
+			meaning
+			time.sleep(3)
+			del st.session_state['rvl']
+
+		rvl = st.button("Reveal Meaning")
+		if rvl:
+			st.session_state['rvl'] = 'rvl'
+
+		st.divider() 
+	else:
+		st.header("All words")
+		for word, meaning in language.items():
+			f"{word}; {meaning}"
+			st.write(" ")
+
+		st.divider()
 
 		
