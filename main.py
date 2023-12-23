@@ -138,11 +138,16 @@ if side_menu == "Home":
 
 	st.divider()
 
-
 	st.header("What is Toki Pona?")
 	st.write(" ")
 
 	st.write("Toki Pona is a simple language created by Sonja Lang.")
+
+def get_word():
+	return rand.choice(list(language.items()))
+
+def click_button():
+	st.session_state.clicked = True
 
 if side_menu == "Dictionary":
 	st.title("Dictionary")
@@ -150,21 +155,19 @@ if side_menu == "Dictionary":
 	st.divider()
 
 	if rvg:
-		word, meaning = np.random.choice(list(language.items()))
+		if 'current_word' not in st.session_state:
+			st.session_state.current_word = get_word()
+
+		word, meaning = st.session_state.current_word
+
+		next_word = st.button("Next Word", type='primary')
+		rvl = st.button("Reveal Meaning", on_click=click_button)
 		st.header(word)
 
-		if 'rvl' not in st.session_state:
-			pass
-		else:
-			meaning
-			time.sleep(3)
-			del st.session_state['rvl']
-
-		rvl = st.button("Reveal Meaning")
-		if rvl:
-			st.session_state['rvl'] = 'rvl'
-
-		st.divider() 
+		if 'clicked' in st.session_state and st.session_state.clicked:
+			st.subheader(meaning)
+			st.session_state.current_word = get_word()
+			st.session_state.clicked = False
 	else:
 		st.header("All words")
 		for word, meaning in language.items():
