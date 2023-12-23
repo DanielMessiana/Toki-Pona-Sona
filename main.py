@@ -3,6 +3,8 @@ import streamlit as st
 import random as rand
 import time
 
+rand.seed()
+
 language = {
 	'a':"emphasis",
 	'akesi': "reptile, amphibian",
@@ -175,5 +177,35 @@ if side_menu == "Dictionary":
 			st.write(" ")
 
 		st.divider()
+
+# key: sentence, value: translation
+tp_sentences = {
+	'ona li toki': 'they are speaking',
+	'mi sona': ['i know', 'i understand'],
+	'kili li moku': 'fruit is food',
+	'sina kute': 'you listen'
+}
+
+def get_sentence():
+	return rand.choice(list(tp_sentences.items()))
+
+if side_menu == "Sentence Game":
+	st.title("Sentence Game")
+	st.divider()
+
+	st.write("Type this sentence in english")
+	st.divider()
+
+	sentence, translation = get_sentence()
+
+	st.header(word)
+
+	st.text_input("Write the answer in English here.")
+
+
+
+
+
+
 
 		
