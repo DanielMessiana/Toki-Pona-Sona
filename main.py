@@ -110,7 +110,7 @@ language = {
 	'supa': "horizontal surface, thing to rest something on",
 	'suwi': "sweet, cute, adorable",
 	'tan': "by, from, because of",
-	'taso': "but, however",
+	'taso': "but, however, only",
 	'tawa': "go to, leave, toward, moving",
 	'telo': "water, liquid, wet substance, beverage",
 	'tenpo': "time, moment, occasion",
