@@ -135,7 +135,7 @@ side_menu = st.sidebar.radio("Side Menu Widgets", options, label_visibility="hid
 
 
 if side_menu == "Home":	
-	st.title("Toki Pona Sona")
+	st.title("Sona Pi Toki Pona")
 	st.caption("This is a website for you to learn toki pona!")
 
 	st.divider()
@@ -172,6 +172,13 @@ if side_menu == "Dictionary":
 			st.session_state.clicked = False
 	else:
 		st.header("All words")
+		search = st.text_input("Search for word...")
+		for word, meaning in langauge.items():
+			if search in word or search in meaning:
+				st.header(word)
+				st.subheader(meaning)
+		st.divider()
+
 		for word, meaning in language.items():
 			f"{word}; {meaning}"
 			st.write(" ")
